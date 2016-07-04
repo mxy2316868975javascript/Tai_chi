@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+  #canvas1{ background:white ;}
+</style>
+
+<script>
+  window.onload = function(){
+      
+      var oC = document.getElementById('canvas1');
+      var oGC = oC.getContext('2d');
+      var num = 1;  
+          
+         oGC.translate(300.5,300.5);
+         setInterval(function(){
+         
+          oGC.save();
+          oGC.clearRect(0,0,oC.width,oC.height);
+          num++
+          oGC.rotate(-num*Math.PI/180);
+          oGC.translate(-300.5,-300.5);
+          
+          //左半边黑色半圆
+          oGC.beginPath();
+          oGC.fillStyle = 'black';
+          oGC.arc(300.5,300.5,200,90*Math.PI/180,-90*Math.PI/180,false);
+          oGC.fill();
+          oGC.stroke();
+          oGC.closePath();
+          
+          //右半边白色半圆
+          oGC.beginPath();
+          oGC.fillStyle = 'white';
+          oGC.arc(300.5,300.5,200,-90*Math.PI/180,90*Math.PI/180,false);
+          oGC.fill();
+          oGC.stroke();
+          oGC.closePath();
+          
+          //小白半圆
+          oGC.beginPath();
+          oGC.fillStyle = 'white';
+          oGC.arc(301.5,200.5,100,90*Math.PI/180,-90*Math.PI/180,false);
+          oGC.fill();
+          oGC.stroke();
+          oGC.closePath();
+          
+          //小黑半圆
+          oGC.beginPath();
+          oGC.fillStyle = 'black';
+          oGC.translate(0,200);
+          oGC.arc(300.5,200.5,100,-90*Math.PI/180,90*Math.PI/180,false);
+          oGC.fill();
+          oGC.closePath();
+          oGC.stroke();
+          
+          //中心小黑圆
+          oGC.beginPath();
+          oGC.fillStyle = 'black';
+          oGC.translate(0,-200);
+          oGC.arc(300.5,200.5,20,0,360*Math.PI/180,false);
+          oGC.fill();
+          oGC.closePath();
+          oGC.stroke();
+          
+          //中心小白圆
+          oGC.beginPath();
+          oGC.fillStyle = 'white';
+          oGC.translate(0,200);
+          oGC.arc(300.5,200.5,20,0,360*Math.PI/180,false);
+          oGC.fill();
+          oGC.closePath();
+          oGC.stroke(); 
+          
+          oGC.restore();
+      },30) ;
+   }
+      
+</script>
+</head>
+
+<body>
+   <canvas id="canvas1" width="600" height="600">
+       <span>
+           不好意思，您的浏览器不支持canvas！
+       </span>
+   </canvas>
+</body>
+</html>
